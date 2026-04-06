@@ -38,7 +38,7 @@
     * **적용 내용:** 목표를 사용자가 정하게 한다는  AI의 말에 영감을 얻어, 정상 BMI와 사용자 그룹의 평균 BMI를 사용자에게 제공하여 직접 목표 BMI를 설정하도록 설정했다. 또한 AI의 조언을 토대로, 사용자의 기존 체중과 비교하여 앞으로의 방향성을 컨설팅 해주는 프로그램으로 설계하게 됐다. 
     
 ### **📁 증빙 자료:**
-  * [1차_AI협업캡처.pdf 첨부 완료] (첨부 후 링크)
+  * [1차_AI협업캡처.pdf 첨부 완료] (https://github.com/MJU-PY-2026-1/mju-py-homework-gksdbals0705-art/blob/main/60211599%ED%95%9C%EC%9C%A0%EB%AF%BC_%ED%8C%8C%EC%9D%B4%EC%8D%AC%20%EC%9E%85%EB%AC%B8.%20AI%ED%98%91%EC%97%85%20%EC%A6%9D%EB%AA%85.pdf)
 
 <br>
 
