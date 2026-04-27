@@ -44,7 +44,10 @@ for i in range(member_count):
   current_bmi = bmis[i]
 
   print(f'{i+1}번 파티원의 분석 결과 -> 키 : {current_h}m, 체중 : {current_w}kg, BMI : {current_bmi}')
-  if current_bmi < 18.5:
+  if current_bmi<16.0:
+    print('당신은 심각한 저체중입니다. 이번 주차 다이어트 평가에서 제외됩니다. 다이어트가 아닌 증량을 목표로 잡으세요!')
+    continue
+  elif current_bmi < 18.5:
     grade = "B등급(저체중)"
   elif current_bmi < 23.0:
     grade = "S등급(정상)"
