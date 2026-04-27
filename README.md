@@ -72,7 +72,8 @@
     * **해결:** 계속해서 같은 실수가 발생하는 것을 인지하고, 코드를 전체적으로 짠 다음에 한 번 더 괄호의 갯수를 확인하는 습관을 가지게 됨.
      
 ### **📁 증빙 자료:**
-  * [2차_AI협업캡처.pdf 첨부 완료] (첨부 후 링크)
+  * [[2차_AI협업캡처.pdf 첨부 완료]
+(https://github.com/MJU-PY-2026-1/mju-py-homework-gksdbals0705-art/blob/main/60211599%20%ED%95%9C%EC%9C%A0%EB%AF%BC_%ED%8C%8C%EC%9D%B4%EC%8D%AC%20%EC%9E%85%EB%AC%B8.%20AI%20%ED%98%91%EC%97%85%20%EC%A6%9D%EB%AA%85%202%EC%B0%A8.pdf)
   * [2차과제_실행결과.jpg]
 <br>
 
