@@ -74,7 +74,8 @@
 ### **📁 증빙 자료:**
   * [[2차_AI협업캡처.pdf 첨부 완료]
 (https://github.com/MJU-PY-2026-1/mju-py-homework-gksdbals0705-art/blob/main/60211599%20%ED%95%9C%EC%9C%A0%EB%AF%BC_%ED%8C%8C%EC%9D%B4%EC%8D%AC%20%EC%9E%85%EB%AC%B8.%20AI%20%ED%98%91%EC%97%85%20%EC%A6%9D%EB%AA%85%202%EC%B0%A8.pdf)
-  * [2차과제_실행결과.jpg] https://github.com/MJU-PY-2026-1/mju-py-homework-gksdbals0705-art/upload/main 
+  * [2차과제_실행결과.jpg] - jpg 파일로 만드는 방법을 몰라 pdf로 만들어 제출합니다. 혹시 문제가 된다면 다시 수정하겠습니다.
+(https://github.com/MJU-PY-2026-1/mju-py-homework-gksdbals0705-art/blob/main/60211599%20%ED%95%9C%EC%9C%A0%EB%AF%BC_%ED%8C%8C%EC%9D%B4%EC%8D%AC%20%EC%9E%85%EB%AC%B8.%202%EC%B0%A8%EA%B3%BC%EC%A0%9C%20%EC%8B%A4%ED%96%89%EA%B2%B0%EA%B3%BC.pdf)
 <br>
 
 ## 🟨 [3차 과제: V3.0] 무한 루프와 메뉴 시스템 (반복문) - 향후 작성 예정
