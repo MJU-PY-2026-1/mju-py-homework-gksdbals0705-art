@@ -39,16 +39,19 @@ def calculate_bmi(weight, height):
 
 def input_members():
   global total_party_weight, max_weight
-  
+
+  if member_count==0:
+    print('먼저 1번 메뉴에서 파티 기본 정보를 입력해 주세요.')
+    
   for i in range(member_count):
-    print(f'{i+1}번 파티원 정보 입력'}
+    print(f'{i+1}번 파티원 정보 입력')
     height = float(input(f'{i+1}번 파티원의 키를 m 단위로 입력하세요(예: 1.75):'))
     weight = float(input(f'{i+1}번 파티원의 체중을 kg 단위로 입력하세요(예: 65.3):'))
     
     heights.append(height)
     weights.append(weight)
     
-    bmi = weight/(height*height)
+    bmi = calculate_bmi(weight,height)
     bmis.append(bmi)
 
     total_party_weight += weight   
@@ -94,7 +97,7 @@ def analyze_members(target):
       grade = "F등급(비만)"
     print(f'당신의 등급은 {grade}입니다.')
     
-    if current_bmi <= target_bmi and grade == "S등급(정상)":
+    if current_bmi <= target and grade == "S등급(정상)":
       print("축하합니다! 당신은 [전설의 다이어터] 칭호를 획득했습니다!")
     if grade == "F등급(비만)":
       if current_w == max_weight:
