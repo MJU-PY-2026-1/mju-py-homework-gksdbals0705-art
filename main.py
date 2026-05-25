@@ -61,7 +61,7 @@ def input_members():
 
 def view_status():
   if not weights:
-    print('아직 입력된 파티원이 없습니다. 먼저 1번 메뉴를 통해 입력을 해주세요.')
+    print('아직 입력된 파티원이 없습니다. 먼저 2번 메뉴를 통해 입력을 해주세요.')
     return
     
   party_size = len(weights)
@@ -72,7 +72,7 @@ def view_status():
 
 def analyze_members(target):
   if not weights:
-    print('아직 입력된 파티원이 없습니다. 먼저 1번 메뉴를 통해 입력을 해주세요.')
+    print('아직 입력된 파티원이 없습니다. 먼저 2번 메뉴를 통해 입력을 해주세요.')
     return
 
   print('앗 당신의 BMI 등급이 나왔어요!')
