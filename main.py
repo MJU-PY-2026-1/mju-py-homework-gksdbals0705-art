@@ -20,7 +20,7 @@ def show_menu():
   print('3. 파티 상태 조회')
   print('4. 파티원 BMI 분석')
   print('5. 이번주 퀘스트 확인')
-  print('종료')
+  print('6. 종료')
   
 def setup_party():
   global party_name,member_count,weeks,target_bmi
@@ -51,10 +51,9 @@ def input_members():
     bmi = weight/(height*height)
     bmis.append(bmi)
 
-    total_party_weight += weight
-                  
-max_weight = max(weights)
-print("모든 파티원의 정보 입력이 완료되었습니다.")
+    total_party_weight += weight   
+  max_weight = max(weights)
+  print("모든 파티원의 정보 입력이 완료되었습니다.")
 
 def view_status():
   if not weights:
