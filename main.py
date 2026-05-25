@@ -42,6 +42,7 @@ def input_members():
 
   if member_count==0:
     print('먼저 1번 메뉴에서 파티 기본 정보를 입력해 주세요.')
+    return
     
   for i in range(member_count):
     print(f'{i+1}번 파티원 정보 입력')
