@@ -27,6 +27,7 @@ def show_menu():
   
 def setup_party():
   global party_name,member_count,weeks,target_bmi
+  global total_party_weight, max_weight
   
   print('어서오세요 다어어트 용사님들! 이제 당신들은 하나의 팀이 되어 목표를 향해 달려나갈 것입니다!')
   print("우선, 앞으로 사용하게 될 '파티 이름', '목표하는 다이어트 진행 주차', 파티원의 공통 목표인 '목표 BMI'를 입력해주세요!\n")
@@ -36,6 +37,13 @@ def setup_party():
     member_count = int(input(f'{party_name}파티의 총 인원수는 몇 명인가요?(숫자만 적어주세요!) :'))
     weeks = int(input(f'{party_name}파티가 목표하는 다이어트 진행주차를 알려주세요!(숫자만 적어주세요!) :'))
     target_bmi = float(input(f'{party_name}파티의 목표 BMI는 몇인가요? :'))
+    heights.clear()
+    weights.clear()
+    bmis.clear()
+    party_members.clear()
+    total_party_weight = 0.0
+    max_weight = 0.0
+    
   except ValueError:
     print("\n [오류] 인원수, 진행주차, BMI는 반드시 숫자로 입력해야 합니다. 1번 메뉴를 다시 실행해주세요")
 
@@ -55,13 +63,14 @@ def input_members():
     
   print(f'총 {member_count - len(party_members)}명의 정보를 추가로 입력해주십시오.')
     
-  for i in range(member_count):
-    print(f'{i+1}번 파티원 정보 입력')
+  while len(party_members) < member_count:
+    current_num = len(party_members) + 1
+    print(f'{current_num}번 파티원 정보 입력')
 
     try: 
-      name = input(f'{i+1}번 파티원의 이름을 입력하세요: ')
-      height = float(input(f'{i+1}번 파티원의 키를 m 단위로 입력하세요(예: 1.75):'))
-      weight = float(input(f'{i+1}번 파티원의 체중을 kg 단위로 입력하세요(예: 65.3):'))
+      name = input(f'{current_num}번 파티원의 이름을 입력하세요: ')
+      height = float(input(f'{current_num}번 파티원의 키를 m 단위로 입력하세요(예: 1.75):'))
+      weight = float(input(f'{current_num}번 파티원의 체중을 kg 단위로 입력하세요(예: 65.3):'))
       bmi = calculate_bmi(weight,height)
       
       heights.append(height)
@@ -73,27 +82,40 @@ def input_members():
       
       max_weight = max(weights)
       
-      print("{name} 파티원의 정보 입력이 완료되었습니다.")
+      print(f'{name} 파티원의 정보 입력이 완료되었습니다.')
     except ValueError:
-      print('[ValueError] 키와 체중은 반드시 '숫자'로 입력해주세요. 다시 입력해주세요')
+      print("[ValueError] 키와 체중은 반드시 '숫자'로 입력해주세요. 다시 입력해주세요")
 
 def view_status():
-  if not weights:
+  if not party_members:
     print('아직 입력된 파티원이 없습니다. 먼저 2번 메뉴를 통해 입력을 해주세요.')
     return
     
   party_size = len(party_members)
-  bmis_sort=sorted(bmis)
+  
+  rank_list = []
+  for member in party_members:
+    rank_list.append([member[3], member[0]])
+  rank_list.sort()
+  print('\n[BMI 랭킹]')
+  for i in range(len(rank_list)):
+    print(f'{i+1}위 : {rank_list[i][1]} / BMI : {rank_list[i][0]:.2f}')
+  print(f'{party_name}파티의 파티원은 {party_size}명으로, 총 몸무게 합은 {total_party_weight:.1f}kg입니다.')
 
-  print(f'현재 파티의 BMI 랭킹은 다음과 같습니다. \n{bmis_sort}')
-  print(f'{party_name}파티의 파티원은 {party_size}명으로, 총 몸무게 합은 {total_party_weight}입니다.')
+  print('\n[파티원 상세 정보]')
+  for member in party_members:
+    print()
+    print(f'[{member[0]}] 키: {member[1]}m | 체중: {member[2]}kg | BMI: {member[3]:.2f}')
 
-  for i in range(len(party_members)):
-    for party_view in i
-      print(f'파티원들의 기본 정보는 다음과 같습니다.\n{party_view}')
+  print('\n[이중 순회]')
+  for member in party_members:
+    for data in member:
+      print(data, end=' ')
+    print()
+    
       
 def analyze_members(target):
-  if not weights:
+  if not party_members:
     print('아직 입력된 파티원이 없습니다. 먼저 2번 메뉴를 통해 입력을 해주세요.')
     return
 
@@ -102,11 +124,11 @@ def analyze_members(target):
 
   for member in party_members:
     name = member[0]
-    current_h = heights[i]
-    current_w = weights[i]
-    current_bmi = bmis[i]
+    current_h = member[1]
+    current_w = member[2]
+    current_bmi = member[3]
 
-    print(f'{name} 파티원의 분석 결과 -> 키 : {current_h}m, 체중 : {current_w}kg, BMI : {current_bmi}')
+    print(f'{name} 파티원의 분석 결과 -> 키 : {current_h}m, 체중 : {current_w}kg, BMI : {current_bmi:.2f}')
     
     if current_bmi<16.0:
       print('당신은 심각한 저체중입니다. 이번 주차 다이어트 평가에서 제외됩니다. 다이어트가 아닌 증량을 목표로 잡으세요!')
@@ -128,6 +150,9 @@ def analyze_members(target):
         print("경고! 당신은 [야식의 노예] 칭호를 획득했습니다. 파티 꼴지입니다. 분발하세요!")
 
 def show_weekly_quest():
+  if party_name == '':
+    print('먼저 1번 메뉴에서 파티 기본 정보를 입력해주세요.')
+    return
   quest = random.choice(['배달음식 금지!', '8시 이후로는 물만 마시기!', '하루에 유산소 운동 30분하기!', '패스트푸드 금지!', '3번 헬스장 가기!', '하루에 스쿼트 50개하기!'])
   print(f'\n앞으로 {weeks}주 동안 {party_name} 파티의 건투를 빕니다!')
   print(f'참고로 이번주 파티원들이 지켜야할 퀘스트는 {quest}입니다. 여러분의 양심을 믿겠습니다!')
@@ -144,24 +169,26 @@ def manage_data_file():
       
     try:
       with open('diet_party_data.csv', 'w', encoding = 'utf-8')as file:
-        file.write("Name, Height, Weight, BMI")
+        file.write("Name,Height,Weight,BMI\n")
         for member in party_members:
-          file.write(f'{member[0]},{member[1]},{member[2]},{member[3]}')
-          
+          file.write(f'{member[0]},{member[1]},{member[2]},{member[3]:.2f}\n')
       print('데이터가 "diet_party_data.csv"파일로 성공적으로 저장되었습니다!')
+    except Exception as e:
+      print(f'[파일 저장 오류] {e}')
         
-    elif sub_menu == '2':
-      try:
-        with open('diet_party_data.csv', 'r', endcoding = 'utf-8') as file:
-          lines = file.readlines()
-          print('[파일 데이터 확인]')
-          for line in lines:
-            print(line.strip())
-      except FileNotFoundError:
+  elif select_menu == '2':
+    try:
+      with open('diet_party_data.csv', 'r', encoding = 'utf-8') as file:
+        lines = file.readlines()
+        print('[파일 데이터 확인]')
+
+        for line in lines:
+          print(line.strip())
+    except FileNotFoundError:
         print("[FileNotFoundError 오류 발생] 'diet_party_data.csv' 파일이 존재하지 않습니다. 먼저 1번을 눌러 데이터를 저장해주세요.")
         
-      else:
-        print('잘못된 입력입니다.')
+  else:
+    print('잘못된 입력입니다.')
       
     
    
@@ -188,7 +215,7 @@ while True:
     break
   else:
    print()
-   print('잘못된 메뉴 번호입니다. 1,2,3,4,5,6 중에서 선택해 주세요.')
+   print('잘못된 메뉴 번호입니다. 1,2,3,4,5,6,7 중에서 선택해 주세요.')
   
   
 
