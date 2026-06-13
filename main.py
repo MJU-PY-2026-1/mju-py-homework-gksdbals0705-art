@@ -110,7 +110,10 @@ def view_status():
   print('\n[이중 순회]')
   for member in party_members:
     for data in member:
-      print(data, end=' ')
+      if type(data) == float:
+        print(f'{data:.2f}', end=' ')
+      else:
+        print(data, end=' ')
     print()
     
       
